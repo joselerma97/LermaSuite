@@ -1,0 +1,19 @@
+.container_center{
+    text-align: center;
+}
+.main_text{
+    font-style: oblique;
+    font-size: x-large;
+}
+.white_text{
+    color: white;
+}
+footer {
+    position: relative;
+    bottom:0;
+    width:100%;
+    background:#6cf;
+}
+p{
+    text-align: justify;
+}

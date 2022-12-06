@@ -3,73 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>Lerma Suite</title>
-    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css">
-    <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" href="img/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        .container_pointer{
-            cursor: pointer;
-        }
-
-        .container_center{
-            text-align: center;
-        }
-        .main_text{
-            font-style: oblique;
-            font-size: x-large;
-        }
-        .white_text{
-            color: white;
-        }
-
-        footer {
-            position: relative;
-            bottom:0;
-            width:100%;
-            background:#6cf;
-        }
-
-    </style>
-
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+
 
 <div class="row blue teal lighten-1">
     <div class="col s12 container_center">
         <span class="flow-text main_text">
-            Ing. José Manuel Cuenca Lerma
+            Ing. José Manuel Cuenca Lerma <a class="waves-effect modal-trigger" href="#ayuda"><i class="material-icons white-text">help</i></a>
         </span>
     </div>
-    <div class="col s4 container_center container_pointer" onclick="loadHTML('software.html')">
-        <span class="flow-text white_text">
-            Desarrollo de Software
-        </span>
-    </div>
-    <div class="col s4 container_center container_pointer" onclick="loadHTML('ie.html')">
-        <span class="flow-text white_text">
-            IE University
-        </span>
-    </div>
-    <div class="col s4 container_center container_pointer" onclick="loadHTML('videos.html')">
-        <span class="flow-text white_text">
-            Difusión de la ciencia
-        </span>
+    <div class="col s12">
+        <ul id="tabs-swipe-demo" class="tabs blue teal lighten-1">
+            <li class="tab col s4 white_text"><a  class="active white-text" href="#software">Desarrollo de Software</a></li>
+            <li class="tab col s4"><a class="white-text" href="#ie">IE University</a></li>
+            <li onclick="initJS()" class="tab col s4"><a class="white-text" href="#videos">Difusión de la Ciencia</a></li>
+        </ul>
     </div>
 </div>
 
-<div id="container_view"></div>
+<div class="row">
+    <div id="software" class="col s12"></div>
+    <div id="ie" class="col s12"></div>
+    <div id="videos" class="col s12"></div>
+</div>
+
+<div id="ayuda" class="modal">
+    <div class="modal-content">
+        <h4>Información</h4>
+        <p>El propósito de esta página es fomentar las vocaciones de STEAM.
+            En este sentido, se comparte software a la medida realizado por un Coatzinteco.
+            Además, se agregan documentos de ayuda para aplicar a las convocatorias de la IE University
+        y se anexan video tutoriales con la finalidad de reforzar las habilidades tecnológicas.</p>
+        <p>
+            De igual manera, el código fuente del sitio se comparte a continuación:
+            <a target="_blank" href="https://github.com/joselerma97/LermaSuite">Proyecto de Github</a>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+    </div>
+</div>
 
 <script>
-    function loadHTML(url){
+    function loadHTML(url,id){
         fetch(url)
             .then(response=> response.text())
-            .then(text=> document.getElementById('container_view').innerHTML = text);
+            .then(text=> document.getElementById(id).innerHTML = text);
     }
-    loadHTML('software.html');
+    function initJS(){
+        M.AutoInit();
+    }
+
+    loadHTML('software.html','software');
+    loadHTML('ie.html','ie');
+    loadHTML('videos.html','videos');
+
+    initJS();
 </script>
 
 <footer class="page-footer">
