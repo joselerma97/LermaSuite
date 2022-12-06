@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lerma Suite</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+
+    <link rel="shortcut icon" href="img/logo.png" />
+
+    <style>
+        .container_pointer{
+            cursor: pointer;
+        }
+
+        .container_center{
+            text-align: center;
+        }
+        .main_text{
+            font-style: oblique;
+            font-size: x-large;
+        }
+        .white_text{
+            color: white;
+        }
+
+        footer {
+            position: relative;
+            bottom:0;
+            width:100%;
+            background:#6cf;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="row blue teal lighten-1">
+    <div class="col s12 container_center">
+        <span class="flow-text main_text">
+            Ing. José Manuel Cuenca Lerma
+        </span>
+    </div>
+    <div class="col s4 container_center container_pointer" onclick="loadHTML('software.html')">
+        <span class="flow-text white_text">
+            Desarrollo de Software
+        </span>
+    </div>
+    <div class="col s4 container_center container_pointer" onclick="loadHTML('ie.html')">
+        <span class="flow-text white_text">
+            IE University
+        </span>
+    </div>
+    <div class="col s4 container_center container_pointer" onclick="loadHTML('videos.html')">
+        <span class="flow-text white_text">
+            Difusión de la ciencia
+        </span>
+    </div>
+</div>
+
+<div id="container_view"></div>
+
+<script>
+    function loadHTML(url){
+        fetch(url)
+            .then(response=> response.text())
+            .then(text=> document.getElementById('container_view').innerHTML = text);
+    }
+    loadHTML('software.html');
+</script>
+
+<footer class="page-footer">
+    <div class="footer-copyright">
+        <div class="container container_center">
+            © 2022 Software Coatzinteco
+            <a class="grey-text text-lighten-4 right" target="_blank" href="https://www.linkedin.com/in/josemanuelcuencalerma/">Contacto</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
